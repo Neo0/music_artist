@@ -16,6 +16,8 @@ target = {
     "https://freemidi.org/videogames"
 }
 
+cnt = 0
+
 for url in target:
     cat = url.rstrip("https://freemidi.org/")
     result = requests.get(url)
@@ -46,3 +48,7 @@ for url in target:
         download_url = url + "getter-"+ tmp_list[1]
         urllib.urlretrieve(download_url, "output/"+cat+"/"+music["name"]+".midi")
         print "done!" + music["name"]
+        cnt += 1
+        print "cnt = " + cnt
+
+print "all = " + cnt
