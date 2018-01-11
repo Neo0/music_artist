@@ -18,9 +18,9 @@ target = {
 
 cnt = 0
 
-for url in target:
-    cat = url.rstrip("https://freemidi.org/")
-    result = requests.get(url)
+for uri in target:
+    cat = uri.rstrip("https://freemidi.org/")
+    result = requests.get(uri)
     c = result.content
 
     soup = BeautifulSoup(c)
@@ -49,6 +49,6 @@ for url in target:
         urllib.urlretrieve(download_url, "output/"+cat+"/"+music["name"]+".midi")
         print "done!" + music["name"]
         cnt += 1
-        print "cnt = " + cnt
+        print "cnt = " + str(cnt)
 
-print "all = " + cnt
+print "all = " + str(cnt)
