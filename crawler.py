@@ -55,7 +55,7 @@ for uri in target:
         try:
             urllib.urlretrieve(download_url, "output/"+cat+"/"+music["name"]+".midi")
         except e:
-            print e.message + music[name]
+            print e.message + music["name"]
         print "done!" + music["name"]
         cnt += 1
         print "cnt = " + str(cnt)
