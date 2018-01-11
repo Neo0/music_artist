@@ -19,7 +19,7 @@ target = {
 cnt = 0
 
 for uri in target:
-    cat = uri.rstrip("https://freemidi.org/")
+    cat = uri.lstrip("https://freemidi.org/")
     result = requests.get(uri)
     c = result.content
 
