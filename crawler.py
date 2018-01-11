@@ -42,9 +42,9 @@ for uri in target:
             music = {"url":div.find("a", {"itemprop": "url"})["href"],"name":div.find("a", {"itemprop": "url"}).text.strip().replace(" ","_")}
             music_list.append(music)
             try:
-                print "get!" + music["name"]
+                print("get!" + music["name"])
             except UnicodeEncodeError:
-                print "error!" + music["name"]
+                print("error!" + music["name"])
 
     for music in music_list:
         music_href = music["url"]
@@ -55,9 +55,9 @@ for uri in target:
         try:
             urllib.urlretrieve(download_url, "output/"+cat+"/"+music["name"]+".midi")
         except UnicodeEncodeError:
-            print "error!" + music["name"]
+            print("error!" + music["name"])
         print "done!" + music["name"]
         cnt += 1
-        print "cnt = " + str(cnt)
+        print("cnt = " + str(cnt))
 
-print "all = " + str(cnt)
+print("all = " + str(cnt))
