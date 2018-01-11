@@ -5,7 +5,7 @@ import os
 
 url = "https://freemidi.org/"
 
-target = {
+target = [
     "https://freemidi.org/genre-pop",
     "https://freemidi.org/genre-rock",
     "https://freemidi.org/genre-classical",
@@ -15,7 +15,7 @@ target = {
     "https://freemidi.org/nationalanthems",
     "https://freemidi.org/movies",
     "https://freemidi.org/videogames"
-}
+]
 
 cnt = 0
 
