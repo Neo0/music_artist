@@ -41,7 +41,10 @@ for uri in target:
         for div in soup.find_all("div",class_="artist-song-cell"):
             music = {"url":div.find("a", {"itemprop": "url"})["href"],"name":div.find("a", {"itemprop": "url"}).text.strip().replace(" ","_")}
             music_list.append(music)
-            print "get!" + music["name"]
+            try:
+                print "get!" + music["name"]
+            except e:
+                print e.message + music["name"]
 
     for music in music_list:
         music_href = music["url"]
@@ -49,7 +52,10 @@ for uri in target:
         download_url = url + "getter-"+ tmp_list[1]
         if not os.path.exists("output/"+cat):
             os.makedirs("output/"+cat)
-        urllib.urlretrieve(download_url, "output/"+cat+"/"+music["name"]+".midi")
+        try:
+            urllib.urlretrieve(download_url, "output/"+cat+"/"+music["name"]+".midi")
+        except e:
+            print e.message + music[name]
         print "done!" + music["name"]
         cnt += 1
         print "cnt = " + str(cnt)
