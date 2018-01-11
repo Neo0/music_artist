@@ -43,8 +43,8 @@ for uri in target:
             music_list.append(music)
             try:
                 print "get!" + music["name"]
-            except e:
-                print e.message + music["name"]
+            except:
+                print "error!" + music["name"]
 
     for music in music_list:
         music_href = music["url"]
@@ -54,8 +54,8 @@ for uri in target:
             os.makedirs("output/"+cat)
         try:
             urllib.urlretrieve(download_url, "output/"+cat+"/"+music["name"]+".midi")
-        except e:
-            print e.message + music["name"]
+        except:
+            print "error!" + music["name"]
         print "done!" + music["name"]
         cnt += 1
         print "cnt = " + str(cnt)
