@@ -44,7 +44,7 @@ for uri in target:
             try:
                 print("get!" + music["name"])
             except UnicodeEncodeError:
-                print("error!" + music["name"])
+                print("error!")
 
     for music in music_list:
         music_href = music["url"]
@@ -55,7 +55,7 @@ for uri in target:
         try:
             urllib.urlretrieve(download_url, "output/"+cat+"/"+music["name"]+".midi")
         except UnicodeEncodeError:
-            print("error!" + music["name"])
+            print("error!")
         print("done!" + music["name"])
         cnt += 1
         print("cnt = " + str(cnt))
