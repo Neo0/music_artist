@@ -54,7 +54,7 @@ for uri in target:
             os.makedirs("output/"+cat)
         try:
             urllib.urlretrieve(download_url, "output/"+cat+"/"+music["name"]+".midi")
-        except UnicodeEncodeError:
+        except (UnicodeEncodeError,IOError):
             print("error!")
         try:
             print("done!" + music["name"])
