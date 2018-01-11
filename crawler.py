@@ -43,7 +43,7 @@ for uri in target:
             music_list.append(music)
             try:
                 print "get!" + music["name"]
-            except:
+            except UnicodeEncodeError:
                 print "error!" + music["name"]
 
     for music in music_list:
@@ -54,7 +54,7 @@ for uri in target:
             os.makedirs("output/"+cat)
         try:
             urllib.urlretrieve(download_url, "output/"+cat+"/"+music["name"]+".midi")
-        except:
+        except UnicodeEncodeError:
             print "error!" + music["name"]
         print "done!" + music["name"]
         cnt += 1
