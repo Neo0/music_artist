@@ -47,7 +47,8 @@ for uri in target:
         music_href = music["url"]
         tmp_list = music_href.split("-")
         download_url = url + "getter-"+ tmp_list[1]
-        os.makedirs("output/"+cat)
+        if not os.path.exists("output/"+cat):
+            os.makedirs("output/"+cat)
         urllib.urlretrieve(download_url, "output/"+cat+"/"+music["name"]+".midi")
         print "done!" + music["name"]
         cnt += 1
