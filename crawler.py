@@ -56,7 +56,7 @@ for uri in target:
             urllib.urlretrieve(download_url, "output/"+cat+"/"+music["name"]+".midi")
         except UnicodeEncodeError:
             print("error!" + music["name"])
-        print "done!" + music["name"]
+        print("done!" + music["name"])
         cnt += 1
         print("cnt = " + str(cnt))
 
