@@ -92,8 +92,10 @@ for singer_name in dic.keys():
     for song_url in dic[singer_name]:
         print parse_song_href(singer_name, song_url)
 
-
-mid = pd.DataFrame(database)
-print mid
-mid.to_csv("info.csv")
-print len(database)
+try:
+    mid = pd.DataFrame(database)
+    print mid
+    mid.to_csv("info.csv")
+    print len(database)
+except:
+    print "info.csv error!"
