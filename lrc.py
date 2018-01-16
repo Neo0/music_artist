@@ -1,9 +1,13 @@
 import re
 import urllib
 import urlparse
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
+import csv
+import os
+import numpy as np
+import pandas as pd
 
-database = []
+database = {}
 
 url = u'http://www.lrcgc.com/'
 def find_singers():
@@ -43,6 +47,13 @@ def find_songs(singer):
     return list(set(songs_href))
 
 singers_list = find_singers()
+database_singer = {}
+for i in singers_list:
+    database_singer[i[0]] = {"url": i[1]}
+mi = pd.DataFrame(database_singer)
+print mi
+mi.to_csv("singer_info.csv")
+print len(database_singer)
 dic = {}
 for singer in singers_list:
     try:
@@ -64,7 +75,8 @@ def parse_song_href(singer, song_url):
     try:
         content = urllib.urlopen(download_url.encode('utf-8')).read() 
         with open('./' +  name.encode('utf-8').split('/')[1], 'w') as f:
-            f.write(content) 
+            f.write(content)
+        database[name.encode('utf-8').split('/')[1]] = {"url": download_url.encode('utf-8')}
         return download_url
     except:
         return False
@@ -73,3 +85,9 @@ def parse_song_href(singer, song_url):
 for singer_name in dic.keys():
     for song_url in dic[singer_name]:
         print parse_song_href(singer_name, song_url)
+
+
+mid = pd.DataFrame(database)
+print mid
+mid.to_csv("info.csv")
+print len(database)
