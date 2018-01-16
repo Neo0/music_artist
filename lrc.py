@@ -48,12 +48,18 @@ def find_songs(singer):
 
 singers_list = find_singers()
 database_singer = {}
-for i in singers_list:
-    database_singer[i[0]] = {"url": i[1]}
-mi = pd.DataFrame(database_singer)
-print mi
-mi.to_csv("singer_info.csv")
-print len(database_singer)
+try:
+    for i in singers_list:
+        database_singer[i[0].encode('utf-8')] = {"url": i[1].encode('utf-8')}
+except:
+    print "error!"
+try:
+    mi = pd.DataFrame(database_singer)
+    print mi
+    mi.to_csv("singer_info.csv")
+    print len(database_singer)
+except:
+    print "singer_info.csv error!"
 dic = {}
 for singer in singers_list:
     try:
