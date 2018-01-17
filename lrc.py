@@ -90,7 +90,10 @@ def parse_song_href(singer, song_url):
 
 for singer_name in dic.keys():
     for song_url in dic[singer_name]:
-        print parse_song_href(singer_name, song_url)
+        try:
+            print parse_song_href(singer_name, song_url)
+        except:
+            print "error!"
 
 try:
     mid = pd.DataFrame(database)
